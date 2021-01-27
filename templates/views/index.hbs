@@ -17,7 +17,7 @@
         <script>
             function searchWeather() {
                 var cityId = document.getElementById('city_id').value;
-                fetch('http://localhost:3000/weather?city_id=' + cityId).then(res => {
+                fetch('/weather?city_id=' + cityId).then(res => {
                     res.json().then(data => {
                         var htmlData = '';
                         if (data && data.data.cod == 200) {
