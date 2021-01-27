@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    {{>head}}
+    <body>
+        {{>menu}}
+        {{>header}}
+        <p>Created by <b>{{ name }}</b></p>
+        <form>
+            <input id="city_id">
+            <button type="button" id="search" onclick="searchWeather()">search</button>
+        </form>
+        <div id="result"></div>
+        <img src="/img/anime.png" height="500px">
+        {{>footer}}
+
+        <script>
+            function searchWeather() {
+                var cityId = document.getElementById('city_id').value;
+                fetch('http://localhost:3000/weather?city_id=' + cityId).then(res => {
+                    res.json().then(data => {
+                        var htmlData = '';
+                        if (data && data.data.cod == 200) {
+                            var data = data.data;
+                            htmlData = `<p>City name: ${data.name}</p>
+                            <p>Wind: ${data.wind.speed}</p>
+                            <p>temp max: ${data.temp_max}</p>
+                            `;
+                        } else if (data && data.error) {
+                            htmlData = `<p>${data.error}</p>`;
+                        }
+                        document.getElementById('result').innerHTML = htmlData;
+                    });
+
+                });
+            }
+            
+            
+        </script>
+    </body>
+</html>

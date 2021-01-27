@@ -1,0 +1,15 @@
+h1 {
+    color: red;
+}
+
+footer {
+    font-style: italic;
+    position: fixed;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
